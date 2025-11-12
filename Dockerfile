@@ -13,3 +13,5 @@ RUN wget --no-verbose https://s48.org/1.9.3/scheme48-1.9.3.tgz \
 	&& make \
 	&& sudo make install-no-doc \
 	&& cd .. && rm -rf scheme48-1.9.3*
+
+ENTRYPOINT ["scheme48"]
