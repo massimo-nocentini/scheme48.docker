@@ -9,7 +9,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y wget clang make b
 RUN wget --no-verbose https://s48.org/1.9.3/scheme48-1.9.3.tgz \
 	&& tar xf scheme48-1.9.3.tgz \
 	&& cd scheme48-1.9.3 \
-	&& CC=clang ./configure \
+	&& CC=clang ./configure --build=arm \
 	&& make \
 	&& sudo make install-no-doc \
 	&& cd .. && rm -rf scheme48-1.9.3*
