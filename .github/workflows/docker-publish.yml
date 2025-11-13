@@ -60,7 +60,7 @@ jobs:
                   push: true
                   tags: ${{ steps.meta.outputs.tags }}-${{ matrix.os }} 
                   labels: ${{ steps.meta.outputs.labels }}
-                  builder: ${{ steps.buildx.outputs.name }}
+                  # builder: ${{ steps.buildx.outputs.name }}
 
             # This step generates an artifact attestation for the image, which is an unforgeable statement about where and how it was built. It increases supply chain security for people who consume the image. For more information, see [Using artifact attestations to establish provenance for builds](/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).
             - name: Generate artifact attestation
