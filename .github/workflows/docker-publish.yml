@@ -14,12 +14,8 @@ env:
 # There is a single job in this workflow. It's configured to run on the latest available version of Ubuntu.
 jobs:
     build-and-push-image:
-
-        strategy:
-          matrix:
-            os: [ubuntu-latest] # , ubuntu-24.04-arm
       
-        runs-on: ${{ matrix.os }}
+        runs-on: ubuntu-latest
       
             # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
         permissions:
@@ -63,8 +59,9 @@ jobs:
               with:
                   context: .
                   push: true
-                  tags: ${{ steps.meta.outputs.tags }}-${{ matrix.os }} 
-                  labels: ${{ steps.meta.outputs.labels }}-${{ matrix.os }}
+                  platforms: linux/amd64,linux/arm64
+                  tags: ${{ steps.meta.outputs.tags }}
+                  labels: ${{ steps.meta.outputs.labels }}
                   # builder: ${{ steps.buildx.outputs.name }}
 
             # This step generates an artifact attestation for the image, which is an unforgeable statement about where and how it was built. It increases supply chain security for people who consume the image. For more information, see [Using artifact attestations to establish provenance for builds](/actions/security-guides/using-artifact-attestations-to-establish-provenance-for-builds).

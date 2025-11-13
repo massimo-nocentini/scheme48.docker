@@ -1,6 +1,6 @@
 
 
-FROM ubuntu:latest
+FROM --platform=$BUILDPLATFORM ubuntu:latest
 
 WORKDIR /home/ubuntu
 
