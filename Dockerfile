@@ -1,12 +1,8 @@
 
 
-# ARG BUILDPLATFORM
+FROM --platform=$BUILDPLATFORM alpine:latest
 
-FROM --platform=$BUILDPLATFORM ubuntu:latest
-
-WORKDIR /home/ubuntu
-
-RUN apt-get update && apt-get upgrade -y && apt-get install -y wget clang make build-essential git sudo libreadline-dev
+RUN apk add wget clang make build-base git readline-dev
 
 RUN wget --no-verbose https://s48.org/1.9.3/scheme48-1.9.3.tgz \
 	&& tar xf scheme48-1.9.3.tgz \
